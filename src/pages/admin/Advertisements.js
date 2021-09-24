@@ -17,7 +17,7 @@ const ShopItemList = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/shop/getItems')
+      .get('https://automate-weapp-3y.herokuapp.com/shop/getItems')
       .then((res) => {
         // console.log(res.data);
         setShopItems(res.data);

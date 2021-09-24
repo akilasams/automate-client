@@ -55,18 +55,20 @@ const RegShop = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/user/byId/${details.userId}`)
+      .get(
+        `https://automate-weapp-3y.herokuapp.com/user/byId/${details.userId}`
+      )
       .then((res) => {
         // console.log(res.data);
         setUserDetails(res.data);
-        console.log("user details", res.data)
+        console.log('user details', res.data);
       })
       .catch((err) => {
         console.log(err);
       });
 
     axios
-      .get(`http://localhost:3001/shop/byId/${details.id}`)
+      .get(`https://automate-weapp-3y.herokuapp.com/shop/byId/${details.id}`)
       .then((res) => {
         setShopDetails(res.data);
       })
@@ -82,10 +84,12 @@ const RegShop = (props) => {
   const openItemShowHandler = () => setitemShow(true);
   const closeItemShowHandler = () => setitemShow(false);
 
-
   const approve = () => {
     axios
-      .put(`http://localhost:3001/shop/approveShop/${details.id}`, { regApproval: true })
+      .put(
+        `https://automate-weapp-3y.herokuapp.com/shop/approveShop/${details.id}`,
+        { regApproval: true }
+      )
       .then((res) => {
         console.log(res.data);
         setShowMessage(true);
@@ -94,9 +98,7 @@ const RegShop = (props) => {
       .catch((err) => {
         console.log(err);
       });
-
-  }
-
+  };
 
   // const data = {
   //   itemId: details.id,
@@ -113,38 +115,37 @@ const RegShop = (props) => {
   //   });
 
   return (
-    <> <Modal
-    show={showMessage}
-    header='Approval complete!'
-    onCancel={closeMessageHandler}
-    footer={
-      <Button
-        className={classes.gotToHomeButton}
-        color='primary'
-        variant='contained'
-        onClick={closeMessageHandler}
-        
+    <>
+      {' '}
+      <Modal
+        show={showMessage}
+        header='Approval complete!'
+        onCancel={closeMessageHandler}
+        footer={
+          <Button
+            className={classes.gotToHomeButton}
+            color='primary'
+            variant='contained'
+            onClick={closeMessageHandler}
+          >
+            Okay
+          </Button>
+        }
       >
-        Okay
-      </Button>
-    }
-  >
-    <div className='modal-msg-container'>
-      <h3>Approval complete!</h3><br></br>
-    
-    </div>
-  </Modal>
-
+        <div className='modal-msg-container'>
+          <h3>Approval complete!</h3>
+          <br></br>
+        </div>
+      </Modal>
       <Card
         className={classes.card}
         onClick={openItemShowHandler}
         style={{ cursor: 'pointer' }}
       >
-
         <div className='details-container'>
           <CardHeader
             title={shopDetails.shopName}
-          // subheader={shopDetails.shopName}
+            // subheader={shopDetails.shopName}
           />
           <CardContent>
             <Typography variant='body2' color='textSecondary' component='p'>
@@ -157,12 +158,11 @@ const RegShop = (props) => {
               {userDetails.mobileNumber}
             </Typography>
             <Button
-
               className={classes.postAdButton}
               color='primary'
               variant='contained'
               onClick={() => approve()}
-            disabled={details.regApproval}
+              disabled={details.regApproval}
             >
               Approve Registration
             </Button>

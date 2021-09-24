@@ -8,9 +8,11 @@ function Users() {
   const [listofUsers, setlistofUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/user/getAllUsers').then((response) => {
-      setlistofUsers(response.data);
-    });
+    axios
+      .get('https://automate-weapp-3y.herokuapp.com/user/getAllUsers')
+      .then((response) => {
+        setlistofUsers(response.data);
+      });
   }, []);
 
   return (

@@ -17,7 +17,7 @@ const RegShopList = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/shop/getShops')
+      .get('https://automate-weapp-3y.herokuapp.com/shop/getShops')
       .then((res) => {
         // console.log(res.data);
         setRegShops(res.data);
