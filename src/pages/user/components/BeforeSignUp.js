@@ -45,6 +45,18 @@ function BeforeSignUp() {
           I OWN A SHOP
         </Link>
       </Button>
+      <Button
+        color='primary'
+        variant='contained'
+        style={{ width: '60%', marginTop: '5px', marginBottom: '10px' }}
+      >
+        <Link
+          to='/SignUpAdmin'
+          style={{ textDecoration: 'none', color: '#fff' }}
+        >
+          Admin
+        </Link>
+      </Button>
     </form>
   );
 }
