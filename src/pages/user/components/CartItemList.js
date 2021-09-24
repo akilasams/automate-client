@@ -31,7 +31,7 @@ const CartItemList = (props) => {
 
   // useEffect(() => {
   //   axios
-  //     .get(`http://localhost:3001/cart/getItems/${user.id}`)
+  //     .get(`https://automate-weapp-3y.herokuapp.com/cart/getItems/${user.id}`)
   //     .then((res) => {
   //       console.log(res.data);
   //       setCartItems(res.data);

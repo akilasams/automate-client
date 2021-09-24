@@ -143,7 +143,7 @@ const ShopItem = (props) => {
   //   userId: user.id,
   // };
   // axios
-  //   .post(`http://localhost:3001/shop/placeOrder`, data)
+  //   .post(`https://automate-weapp-3y.herokuapp.com/shop/placeOrder`, data)
   //   .then((res) => {
   //     history.push({ pathname: '/PaymentForm', state: res.data });
   //     setitemShow(false);

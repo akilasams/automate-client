@@ -111,7 +111,7 @@ const PaymentForm = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/user/byId/${authState.id}`)
+      .get(`https://automate-weapp-3y.herokuapp.com/user/byId/${authState.id}`)
       .then((res) => {
         // console.log(res.data);
         setUserDetails(res.data);
@@ -137,7 +137,7 @@ const PaymentForm = (props) => {
             <input
               type='hidden'
               name='return_url'
-              value='http://localhost:3001/PaymentSuccess'
+              value='https://automate-weapp-3y.herokuapp.com/PaymentSuccess'
             />
             <input
               type='hidden'

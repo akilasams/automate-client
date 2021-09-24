@@ -108,7 +108,7 @@ const ShopItem = (props) => {
   //   userId: user.id,
   // };
   // axios
-  //   .post(`http://localhost:3001/shop/placeOrder`, data)
+  //   .post(`https://automate-weapp-3y.herokuapp.com/shop/placeOrder`, data)
   //   .then((res) => {
   //     history.push({ pathname: '/PaymentForm', state: res.data });
   //     setitemShow(false);
@@ -147,7 +147,7 @@ const ShopItem = (props) => {
         <div className='card-media'>
           <img
             className='card-image'
-            src={`http://localhost:3001/${details.image}`}
+            src={`https://automate-weapp-3y.herokuapp.com/${details.image}`}
             alt=''
           />
         </div>

@@ -17,12 +17,11 @@ import SelectQ from '../../pages/user/components/SelectQ';
 import { useFormik } from 'formik';
 import axios from 'axios';
 
-
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant='body2' color='textSecondary' align='center'>
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color='inherit' href='https://material-ui.com/'>
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}
@@ -40,7 +39,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: '(../images/preview.jpg)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+      theme.palette.type === 'light'
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
@@ -66,10 +67,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(3),
-    position: 'relative'
+    position: 'relative',
   },
   heading: {
-    fontFamily : 'Lato'
+    fontFamily: 'Lato',
   },
 }));
 
@@ -77,119 +78,148 @@ const initialValues = {
   item: '',
   price: '',
   quantity: '',
-}
+};
 const options = [
-
-  {value : '1', label: '1' },
-  {value : '2', label: '2'},
-  {value : '3', label: '3'},
-  {value : '4', label: '4'},
-  {value : '5', label: '2'},
-  {value : '5', label: '5'},
-  {value : '6', label: '6'},
-  {value : '7', label: '7'},
-  {value : '8', label: '8'},
-  {value : '9', label: '9'},
-  {value : '10', label: '10'},
-]
+  { value: '1', label: '1' },
+  { value: '2', label: '2' },
+  { value: '3', label: '3' },
+  { value: '4', label: '4' },
+  { value: '5', label: '2' },
+  { value: '5', label: '5' },
+  { value: '6', label: '6' },
+  { value: '7', label: '7' },
+  { value: '8', label: '8' },
+  { value: '9', label: '9' },
+  { value: '10', label: '10' },
+];
 const onSubmit = (data) => {
-  axios.post('http://localhost:3001/cart/addtocart', data).then(() => {
-    console.log(data);
-  });
+  axios
+    .post('https://automate-weapp-3y.herokuapp.com/cart/addtocart', data)
+    .then(() => {
+      console.log(data);
+    });
 };
 export default function Cartform() {
   const classes = useStyles();
   const formik = useFormik({
-    initialValues, 
+    initialValues,
     onSubmit,
-});
+  });
 
   return (
-    <div className="App">
-       <br></br>
-    <Grid
-      container
-      spacing={0}
-      direction="column"
-      alignItems="center"
-      justify="center"
-      style={{ minHeight: '100vh' }}
-    >
-      <Grid item xs={12} sm={10} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Typography component="h1" variant="h4" style={{ color: '#42207A' }}>
-            <b>Add Details</b>
-          </Typography>
-          <br></br>
-          <form className={classes.form} noValidate onSubmit={formik.handleSubmit}>
-          <Typography component="h4" variant="h8" align="left" style={{ color: 'black' }}>
-            <div className={classes.heading}>
-              Item 
-            </div>
-            </Typography>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="item"
-              label="Item"
-              name="item"
-              autoComplete="item"
-              autoFocus
-              onChange={formik.handleChange}
-              error={formik.touched.name && Boolean(formik.errors.name)}
-              helperText={formik.touched.name && formik.errors.name}
-            />
-            <Typography component="h4" variant="h8" align="left" style={{ color: 'black' }}>
-            <div className={classes.heading}>
-              Quantity
-            </div>
+    <div className='App'>
+      <br></br>
+      <Grid
+        container
+        spacing={0}
+        direction='column'
+        alignItems='center'
+        justify='center'
+        style={{ minHeight: '100vh' }}
+      >
+        <Grid
+          item
+          xs={12}
+          sm={10}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+        >
+          <div className={classes.paper}>
+            <Typography
+              component='h1'
+              variant='h4'
+              style={{ color: '#42207A' }}
+            >
+              <b>Add Details</b>
             </Typography>
             <br></br>
-            <SelectQ options = {options}
-              value = {formik.values.quantity}
-              onChange = {value=>formik.setFieldValue('quantity',value.value)}
-             />
-             <br></br>
-              <Typography component="h4" variant="h8" align="left" style={{ color: 'black' }}>
-            <div className={classes.heading}>
-              Price
-            </div>
-            </Typography>
-              <TextField
-              multiline
-              rows={4}
-              rowsMax={1}
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="price"
-              label="Price"
-              name="price"
-              autoComplete="price"
-              autoFocus
-              onChange={formik.handleChange}
-              error={formik.touched.name && Boolean(formik.errors.name)}
-              helperText={formik.touched.name && formik.errors.name}
-            />
-            <Button
-              type="submit"
-              variant="contained"
-              style={{ backgroundColor: "#42207A", color: "#ffffff" }}
-              className={classes.submit}
+            <form
+              className={classes.form}
+              noValidate
+              onSubmit={formik.handleSubmit}
             >
-              Submit
-            </Button>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
-          </form>
-        </div>
+              <Typography
+                component='h4'
+                variant='h8'
+                align='left'
+                style={{ color: 'black' }}
+              >
+                <div className={classes.heading}>Item</div>
+              </Typography>
+              <TextField
+                variant='outlined'
+                margin='normal'
+                required
+                fullWidth
+                id='item'
+                label='Item'
+                name='item'
+                autoComplete='item'
+                autoFocus
+                onChange={formik.handleChange}
+                error={formik.touched.name && Boolean(formik.errors.name)}
+                helperText={formik.touched.name && formik.errors.name}
+              />
+              <Typography
+                component='h4'
+                variant='h8'
+                align='left'
+                style={{ color: 'black' }}
+              >
+                <div className={classes.heading}>Quantity</div>
+              </Typography>
+              <br></br>
+              <SelectQ
+                options={options}
+                value={formik.values.quantity}
+                onChange={(value) =>
+                  formik.setFieldValue('quantity', value.value)
+                }
+              />
+              <br></br>
+              <Typography
+                component='h4'
+                variant='h8'
+                align='left'
+                style={{ color: 'black' }}
+              >
+                <div className={classes.heading}>Price</div>
+              </Typography>
+              <TextField
+                multiline
+                rows={4}
+                rowsMax={1}
+                variant='outlined'
+                margin='normal'
+                required
+                fullWidth
+                id='price'
+                label='Price'
+                name='price'
+                autoComplete='price'
+                autoFocus
+                onChange={formik.handleChange}
+                error={formik.touched.name && Boolean(formik.errors.name)}
+                helperText={formik.touched.name && formik.errors.name}
+              />
+              <Button
+                type='submit'
+                variant='contained'
+                style={{ backgroundColor: '#42207A', color: '#ffffff' }}
+                className={classes.submit}
+              >
+                Submit
+              </Button>
+              <Box mt={5}>
+                <Copyright />
+              </Box>
+            </form>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
-    <br></br>
+      <br></br>
     </div>
   );
 }
