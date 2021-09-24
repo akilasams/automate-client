@@ -249,9 +249,13 @@ const PostAnAdForm = (props) => {
     //   console.log(value);
     // }
     axios
-      .post(`http://localhost:3001/shop/addItem/${authState.id}`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      })
+      .post(
+        `https://automate-weapp-3y.herokuapp.com/shop/addItem/${authState.id}`,
+        formData,
+        {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        }
+      )
       .then((res) => {
         console.log(res.data);
         setShowMessage(true);
@@ -304,8 +308,11 @@ const PostAnAdForm = (props) => {
         }
       >
         <div className='modal-msg-container'>
-          <h3>Your ad needs to be approved by the Admin before publishing. It will be available in the Shop after the Approval is complete.</h3><br></br>
-        
+          <h3>
+            Your ad needs to be approved by the Admin before publishing. It will
+            be available in the Shop after the Approval is complete.
+          </h3>
+          <br></br>
         </div>
       </Modal>
       <h1>Add an Item</h1>

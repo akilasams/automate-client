@@ -31,7 +31,7 @@ function LoginForm() {
 
   const onSubmit = async (data) => {
     await axios
-      .post('http://localhost:3001/user/login', data)
+      .post('https://automate-weapp-3y.herokuapp.com/user/login', data)
       .then((response) => {
         // console.log(data);
         if (response.data.error) {

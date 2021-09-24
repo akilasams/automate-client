@@ -19,7 +19,7 @@ const CartItemList = (props) => {
 
   const fetchCartItems = async () => {
     const response = await fetch(
-      `http://localhost:3001/cart/getItems/${authState.id}`
+      `https://automate-weapp-3y.herokuapp.com/cart/getItems/${authState.id}`
     );
     const data = await response.json();
     setCartItems(data);
