@@ -55,7 +55,9 @@ const ShopItem = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/user/byId/${details.userId}`)
+      .get(
+        `https://automate-weapp-3y.herokuapp.com/user/byId/${details.userId}`
+      )
       .then((res) => {
         // console.log(res.data);
         setUserDetails(res.data);
@@ -65,7 +67,9 @@ const ShopItem = (props) => {
       });
 
     axios
-      .get(`http://localhost:3001/shop/byId/${details.shopId}`)
+      .get(
+        `https://automate-weapp-3y.herokuapp.com/shop/byId/${details.shopId}`
+      )
       .then((res) => {
         // console.log(res.data);
         setShopDetails(res.data);
@@ -83,10 +87,12 @@ const ShopItem = (props) => {
   const openItemShowHandler = () => setitemShow(true);
   const closeItemShowHandler = () => setitemShow(false);
 
-
   const approve = () => {
     axios
-      .put(`http://localhost:3001/shop/approveItem/${details.id}`, { approval: true })
+      .put(
+        `https://automate-weapp-3y.herokuapp.com/shop/approveItem/${details.id}`,
+        { approval: true }
+      )
       .then((res) => {
         console.log(res.data);
         setShowMessage(true);
@@ -95,9 +101,7 @@ const ShopItem = (props) => {
       .catch((err) => {
         console.log(err);
       });
-
-  }
-
+  };
 
   // const data = {
   //   itemId: details.id,
@@ -114,27 +118,27 @@ const ShopItem = (props) => {
   //   });
 
   return (
-    <><Modal
-    show={showMessage}
-    header='Approval complete!'
-    onCancel={closeMessageHandler}
-    footer={
-      <Button
-        className={classes.gotToHomeButton}
-        color='primary'
-        variant='contained'
-        onClick={closeMessageHandler}
-        
+    <>
+      <Modal
+        show={showMessage}
+        header='Approval complete!'
+        onCancel={closeMessageHandler}
+        footer={
+          <Button
+            className={classes.gotToHomeButton}
+            color='primary'
+            variant='contained'
+            onClick={closeMessageHandler}
+          >
+            Okay
+          </Button>
+        }
       >
-        Okay
-      </Button>
-    }
-  >
-    <div className='modal-msg-container'>
-      <h3>Approval complete!</h3><br></br>
-    
-    </div>
-  </Modal>
+        <div className='modal-msg-container'>
+          <h3>Approval complete!</h3>
+          <br></br>
+        </div>
+      </Modal>
       <Card
         className={classes.card}
         onClick={openItemShowHandler}
@@ -160,7 +164,6 @@ const ShopItem = (props) => {
               {details.unitPrice} LKR
             </Typography>
             <Button
-              
               className={classes.postAdButton}
               color='primary'
               variant='contained'
@@ -168,7 +171,7 @@ const ShopItem = (props) => {
               disabled={details.approval}
             >
               Approve Ad
-              </Button>
+            </Button>
           </CardContent>
         </div>
       </Card>
