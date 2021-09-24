@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { shopRegisterSchema } from '../../../validations/UserValidation';
 import axios from 'axios';
 import Modal from '../../../shared/components/UIElements/Modal';
-import { useState, useRef, useEffect  } from 'react';
+import { useState, useRef, useEffect } from 'react';
 // import { Hidden } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
@@ -36,9 +36,8 @@ const useStyle = makeStyles({
     height: '40px',
     width: '120px',
   },
-  input:{
+  input: {
     display: 'none',
-
   },
   inputButton: {
     margin: 7,
@@ -95,10 +94,12 @@ function SignUpFormShop(props) {
     // for (var value of formData.values()) {
     //   console.log(value);
     // }
-    axios.post('http://localhost:3001/user/regShop', formData).then(() => {
-      setShowMessage(true);
-      openMessageHandler();
-    });
+    axios
+      .post('https://automate-weapp-3y.herokuapp.com/user/regShop', formData)
+      .then(() => {
+        setShowMessage(true);
+        openMessageHandler();
+      });
   };
 
   const classes = useStyle();
@@ -108,7 +109,6 @@ function SignUpFormShop(props) {
     onSubmit,
   });
 
- 
   useEffect(() => {
     if (!file) {
       return;
@@ -144,13 +144,21 @@ function SignUpFormShop(props) {
         }
       >
         <div className='modal-msg'>
-          <h2 align='center'>Your Registration is submitted for review. <br></br>
-          You will be able to login after it is confirmed.<br></br>
-          <div className='msg'>We will notify you through the email provided when your registration is approved or not. This may take upto few hours.</div></h2>
-          
+          <h2 align='center'>
+            Your Registration is submitted for review. <br></br>
+            You will be able to login after it is confirmed.<br></br>
+            <div className='msg'>
+              We will notify you through the email provided when your
+              registration is approved or not. This may take upto few hours.
+            </div>
+          </h2>
         </div>
       </Modal>
-      <form  className='form-container' encType='multipart/form-data' onSubmit={formik.handleSubmit}>
+      <form
+        className='form-container'
+        encType='multipart/form-data'
+        onSubmit={formik.handleSubmit}
+      >
         {/* <Field id='auth-input' name='email' placeholder='Email' />
           <Field id='auth-input' name='password' placeholder='Password' />
           <Button color='primary' variant='contained'>
@@ -253,33 +261,38 @@ function SignUpFormShop(props) {
           helperText={formik.touched.email && formik.errors.email}
         />
         <input
-              // accept='image/*'
-              ref={filePickerRef}
-              name='file'
-              className={classes.input}
-              id='contained-button-file'
-              // multiple
-              onChange={handleFileChange}
-              type='file'
-            />
-            <label htmlFor='contained-button-file'>
-              <div className='image-upload center'>
-                 <div className='file-upload__preview'>
-                  {previewUrl && <img src={previewUrl} alt='Preview' />}
-                  {!previewUrl && <p>Please upload a scanned copy of your Business Registration Document</p>}
-                </div> 
-                <Button
-                  startIcon={<CloudUploadIcon />}
-                  className={classes.inputButton}
-                  onClick={uploadHandler}
-                  variant='outlined'
-                  color='primary'
-                  component='span'
-                >
-                  Upload Document
-                </Button>
-              </div>
-            </label>
+          // accept='image/*'
+          ref={filePickerRef}
+          name='file'
+          className={classes.input}
+          id='contained-button-file'
+          // multiple
+          onChange={handleFileChange}
+          type='file'
+        />
+        <label htmlFor='contained-button-file'>
+          <div className='image-upload center'>
+            <div className='file-upload__preview'>
+              {previewUrl && <img src={previewUrl} alt='Preview' />}
+              {!previewUrl && (
+                <p>
+                  Please upload a scanned copy of your Business Registration
+                  Document
+                </p>
+              )}
+            </div>
+            <Button
+              startIcon={<CloudUploadIcon />}
+              className={classes.inputButton}
+              onClick={uploadHandler}
+              variant='outlined'
+              color='primary'
+              component='span'
+            >
+              Upload Document
+            </Button>
+          </div>
+        </label>
         <TextField
           className={classes.field}
           id='password'

@@ -52,10 +52,12 @@ export default function Cart() {
       total: total,
       cartItemsList: cartItemsList,
     };
-    axios.post('http://localhost:3001/shop/placeOrder', data).then((res) => {
-      setOrder(res.data);
-      openPaymentConfirmHandler();
-    });
+    axios
+      .post('https://automate-weapp-3y.herokuapp.com/shop/placeOrder', data)
+      .then((res) => {
+        setOrder(res.data);
+        openPaymentConfirmHandler();
+      });
     // console.log(cartItemsList);
   };
 

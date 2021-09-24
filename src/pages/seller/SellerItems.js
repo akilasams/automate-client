@@ -54,7 +54,9 @@ const SellerItems = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/user/byId/${details.userId}`)
+      .get(
+        `https://automate-weapp-3y.herokuapp.com/user/byId/${details.userId}`
+      )
       .then((res) => {
         // console.log(res.data);
         setUserDetails(res.data);
@@ -64,7 +66,9 @@ const SellerItems = (props) => {
       });
 
     axios
-      .get(`http://localhost:3001/shop/byId/${details.shopId}`)
+      .get(
+        `https://automate-weapp-3y.herokuapp.com/shop/byId/${details.shopId}`
+      )
       .then((res) => {
         // console.log(res.data);
         setShopDetails(res.data);
@@ -79,9 +83,12 @@ const SellerItems = (props) => {
 
   const approve = () => {
     axios
-      .put(`http://localhost:3001/shop/approveItem/${details.id}`, {
-        approval: true,
-      })
+      .put(
+        `https://automate-weapp-3y.herokuapp.com/shop/approveItem/${details.id}`,
+        {
+          approval: true,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         // setShowMessage(true);
@@ -116,7 +123,7 @@ const SellerItems = (props) => {
         <div className='card-media'>
           <img
             className='card-image'
-            src={`http://localhost:3001/${details.image}`}
+            src={`https://automate-weapp-3y.herokuapp.com/${details.image}`}
             alt=''
           />
         </div>

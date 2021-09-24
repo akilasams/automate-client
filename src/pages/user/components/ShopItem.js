@@ -65,7 +65,9 @@ const ShopItem = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/user/byId/${details.userId}`)
+      .get(
+        `https://automate-weapp-3y.herokuapp.com/user/byId/${details.userId}`
+      )
       .then((res) => {
         // console.log(res.data);
         setUserDetails(res.data);
@@ -75,7 +77,9 @@ const ShopItem = (props) => {
       });
 
     axios
-      .get(`http://localhost:3001/shop/byId/${details.shopId}`)
+      .get(
+        `https://automate-weapp-3y.herokuapp.com/shop/byId/${details.shopId}`
+      )
       .then((res) => {
         // console.log(res.data);
         setShopDetails(res.data);
@@ -101,7 +105,10 @@ const ShopItem = (props) => {
 
     if (quantity <= details.quantity) {
       axios
-        .post(`http://localhost:3001/cart/addToCart/${authState.id}`, data)
+        .post(
+          `https://automate-weapp-3y.herokuapp.com/cart/addToCart/${authState.id}`,
+          data
+        )
         .then((res) => {
           console.log(res.data);
           alert('Item Added to Cart');
@@ -122,11 +129,13 @@ const ShopItem = (props) => {
     };
     console.log(data);
 
-    axios.post('http://localhost:3001/shop/buyNow', data).then((res) => {
-      console.log(res.data);
-      setOrder(res.data);
-      openPaymentConfirmHandler();
-    });
+    axios
+      .post('https://automate-weapp-3y.herokuapp.com/shop/buyNow', data)
+      .then((res) => {
+        console.log(res.data);
+        setOrder(res.data);
+        openPaymentConfirmHandler();
+      });
   };
 
   // const data = {
@@ -203,7 +212,10 @@ const ShopItem = (props) => {
       >
         {/* <div className='item-container'> */}
         <div className='modal-img-container'>
-          <img src={`http://localhost:3001/${details.image}`} alt='' />
+          <img
+            src={`https://automate-weapp-3y.herokuapp.com/${details.image}`}
+            alt=''
+          />
         </div>
         <div className='content-container'>
           {shopDetails.shopName} <br />
@@ -248,7 +260,7 @@ const ShopItem = (props) => {
         <div className='card-media'>
           <img
             className='card-image'
-            src={`http://localhost:3001/${details.image}`}
+            src={`https://automate-weapp-3y.herokuapp.com/${details.image}`}
             alt=''
           />
         </div>

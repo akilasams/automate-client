@@ -27,7 +27,9 @@ const ShopItemList = () => {
     //   .catch((err) => {
     //     console.log(err);
     //   });
-    const response = await fetch('http://localhost:3001/shop/getItems');
+    const response = await fetch(
+      'https://automate-weapp-3y.herokuapp.com/shop/getItems'
+    );
     const data = await response.json();
     setShopItems(data);
   }

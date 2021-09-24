@@ -52,7 +52,7 @@ function App() {
 
   const fetchUser = async () => {
     axios
-      .get('http://localhost:3001/user/auth', {
+      .get('https://automate-weapp-3y.herokuapp.com/user/auth', {
         headers: {
           accessToken: localStorage.getItem('accessToken'),
         },

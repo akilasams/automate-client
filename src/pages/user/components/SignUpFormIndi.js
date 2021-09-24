@@ -37,10 +37,12 @@ function SignUpFormIndi(props) {
   const closeMessageHandler = () => setShowMessage(false);
 
   const onSubmit = (data) => {
-    axios.post('http://localhost:3001/user/regCustomer', data).then(() => {
-      setShowMessage(true);
-      openMessageHandler();
-    });
+    axios
+      .post('https://automate-weapp-3y.herokuapp.com/user/regCustomer', data)
+      .then(() => {
+        setShowMessage(true);
+        openMessageHandler();
+      });
   };
 
   const classes = useStyle();

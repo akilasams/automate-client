@@ -67,16 +67,20 @@ const CartItem = (props) => {
   const handleDelete = () => {
     const id = details.id;
 
-    axios.delete(`http://localhost:3001/cart/deleteItem/${id}`).then((res) => {
-      console.log('Item Deleted');
-      closeMessageHandler();
-      history.push('/Shop');
-    });
+    axios
+      .delete(`https://automate-weapp-3y.herokuapp.com/cart/deleteItem/${id}`)
+      .then((res) => {
+        console.log('Item Deleted');
+        closeMessageHandler();
+        history.push('/Shop');
+      });
   };
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/shop/getItem/byId/${details.itemId}`)
+      .get(
+        `https://automate-weapp-3y.herokuapp.com/shop/getItem/byId/${details.itemId}`
+      )
       .then((res) => {
         // console.log(res.data);
         setItem(res.data);
@@ -114,7 +118,7 @@ const CartItem = (props) => {
         <div className='card-media'>
           <img
             className='card-image'
-            src={`http://localhost:3001/${item.image}`}
+            src={`https://automate-weapp-3y.herokuapp.com/${item.image}`}
             alt=''
           />
         </div>

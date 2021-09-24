@@ -64,7 +64,10 @@ export default function ContactUs() {
 
   const onSubmit = (data) => {
     axios
-      .post(`http://localhost:3001/contactus/addmessage/${authState.id}`, data)
+      .post(
+        `https://automate-weapp-3y.herokuapp.com/contactus/addmessage/${authState.id}`,
+        data
+      )
       .then(() => {
         setShowMessage(true);
         openMessageHandler();

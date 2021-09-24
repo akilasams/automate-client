@@ -29,16 +29,20 @@ export default function Dashboard() {
   const [countofUsers, setcountofUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/user/getCount').then((response) => {
-      setcountofUsers(response.data);
-    });
+    axios
+      .get('https://automate-weapp-3y.herokuapp.com/user/getCount')
+      .then((response) => {
+        setcountofUsers(response.data);
+      });
   }, []);
   const [countofAds, setcountofAds] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/shop/getAds').then((response) => {
-      setcountofAds(response.data);
-    });
+    axios
+      .get('https://automate-weapp-3y.herokuapp.com/shop/getAds')
+      .then((response) => {
+        setcountofAds(response.data);
+      });
   }, []);
   return (
     <Grid container spacing={20}>
