@@ -45,7 +45,7 @@ function BeforeSignUp() {
           I OWN A SHOP
         </Link>
       </Button>
-      <Button
+      {/* <Button
         color='primary'
         variant='contained'
         style={{ width: '60%', marginTop: '5px', marginBottom: '10px' }}
@@ -56,7 +56,7 @@ function BeforeSignUp() {
         >
           Admin
         </Link>
-      </Button>
+      </Button> */}
     </form>
   );
 }
